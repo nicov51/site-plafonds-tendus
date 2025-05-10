@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  --bg-main: #B6AC97;       /* fond global */
+  --bg-header: #678760;     /* nav + footer */
+  --text-link: #356859;     /* liens visibles */
+  --btn-bg: #356859;        /* bouton fond */
+  --btn-text: #ffffff;      /* bouton texte */
+}
+
+/*  Styles de base */
+body {
+  background-color: var(--bg-main);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav, footer {
+  background-color: var(--bg-header);
+  color: white;
+  padding: 1rem;
+}
+
+button {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
