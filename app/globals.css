@@ -1,11 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --bg-main: #B6AC97;       /* fond global */
-  --bg-header: #678760;     /* nav + footer */
-  --text-link: #356859;     /* liens visibles */
-  --btn-bg: #356859;        /* bouton fond */
+  --bg-main: #f8fafc;       /* fond global */
+  --bg-header: rgba(92, 158, 246, 0.55);  /* nav + footer */
+  --text-link: #3b82f6;     /* liens visibles */
+  --btn-bg: #10b981;        /* bouton fond */
   --btn-text: #ffffff;      /* bouton texte */
+  --text-primary: #1f2937;  /* texte principal */
+  --text-secondary: #6b7280; /* texte secondaire */
+  --border-color: #e5e7eb;  /* bordures */
 }
 
 /*  Styles de base */
