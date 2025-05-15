@@ -22,7 +22,7 @@ export default function RootLayout({
     <body className="bg-white text-black p-0 m-0">
     <AppRouterCacheProvider>
     <Navbar />
-      <Box sx={{ marginTop: "64px" }}> {/* Marge pour éviter le chevauchement */}
+      <Box >
         {children}
       </Box>
     <Footer />
