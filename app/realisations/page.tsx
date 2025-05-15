@@ -2,6 +2,9 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import BeforeAfter from '@components/BeforeAfter'
+import ContextArticle from '@components/ContextArticle';
+import { Box, Paper } from '@mui/material';
 
 const avantApres = [
   { avant: '/images/avantApres/avant1.webp', apres: '/images/avantApres/apres1.webp' },
@@ -62,6 +65,41 @@ export default function RealisationsPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="space-y-12 py-12">
+        <Paper
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            alignItems: 'stretch',
+            gap: 4,
+            my: 6,
+            p: { xs: 2, md: 4 },
+            borderRadius: 2,
+          }}
+        >
+          <Box sx={{ flex: 1, minHeight: { xs: 300, sm: 400, md: 'auto' },}}>
+            <BeforeAfter
+              beforeSrc="/images/avantApres/avant1.webp"
+              afterSrc="/images/avantApres/apres1.webp"
+              alt="Plafond salon"
+            />
+          </Box>
+
+          <ContextArticle
+            title="Un salon transformé en moins de 24h"
+            chapo="Intervention rapide, propre et sans poussière, pour un résultat impeccable."
+            highlights={[
+              'Toile satinée blanche tendue à chaud',
+              'Intégration de spots LED encastrés',
+              'Profilé invisible (< 5mm) pour une finition haut de gamme',
+            ]}
+            description="Dans ce projet, notre client souhaitait redonner un coup d’éclat à son salon tout en modernisant l’éclairage. Nous avons retiré l’ancien faux plafond et installé une toile tendue en une journée seulement. Résultat : une pièce transformée, lumineuse et élégante."
+            finalNote="Ce type de projet est idéal pour les pièces de vie, sans engager de gros travaux."
+          />
+        </Paper>
+
       </section>
 
       {/* Section Réalisations */}
