@@ -13,11 +13,33 @@ export default function DevisForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setOpenSnackbar(true);
-    setFormData({ nom: "", email: "", ville: "", date: "", surface: "", description: "" });
-  };
+
+    try {
+      const response = await fetch("/api/sendDevis", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setOpenSnackbar(true);
+        setFormData({ nom: "", email: "", ville: "", date: "", surface: "", description: ""
+        });
+
+      }else {
+        console.error(" Une erreur est survenue lors de l'envoi d'email ");
+      }
+      } catch (error) {
+      console.error("Erreur réseau :", error);
+    }
+    };
+
+
+
 
   return (
     <Box component="form" onSubmit={handleSubmit} display="flex" flexDirection="column" gap={2}>
