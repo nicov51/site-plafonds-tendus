@@ -21,7 +21,7 @@ const navItems = [
   { label: "Accueil", href: "/" },
   { label: "Réalisations", href: "/realisations" },
   { label: "Contact", href: "/contact" },
-  { label: "Demande de devis", href: "/devis" },
+  { label: "Contact - Demande de devis", href: "/devis" },
   { label: "Blog", href: "/blog" },
 ];
 
