@@ -82,7 +82,7 @@ export default function Navbar() {
               alt="Logo"
               width={64}
               height={64}
-              style={{ objectFit: "contain" }}
+              // style={{ width: 'auto', height: 'auto' }}
             />
           </Box>
 
