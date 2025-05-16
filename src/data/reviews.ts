@@ -104,6 +104,13 @@ const reviews = [
     date: "2024-05-05",
     ville: "Sillery (51500)",
   },
+  // {
+  //   nom: "Nouveau Client",
+  //   commentaire: "Super travail !", // ← Collé depuis le form
+  //   note: 5,
+  //   date: new Date().toISOString().split('T')[0], // Date auto
+  //   ville: "Reims (51100)" // À adapter
+  // },
 ];
 
 export default reviews;
