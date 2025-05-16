@@ -20,8 +20,8 @@ import { useState } from "react";
 const navItems = [
   { label: "Accueil", href: "/" },
   { label: "Réalisations", href: "/realisations" },
-  { label: "Contact", href: "/contact" },
-  { label: "Demande de devis", href: "/devis" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Contact - Demande de devis", href: "/devis" },
   { label: "Blog", href: "/blog" },
 ];
 
