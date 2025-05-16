@@ -10,7 +10,7 @@ export default function StructuredData() {
       name="Plafond Tendu Fismes - Nicolas Viennot"
       description="Spécialiste des plafonds tendus en Champagne Ardennes depuis 2009. Pose rapide et propre."
       url="https://nicolasviennot.fr"
-      telephone="+33612345678"
+      telephone="+33760462610"
       address={{
         streetAddress: "23 rue henri dambreville",
         addressLocality: "Fismes",
@@ -19,8 +19,8 @@ export default function StructuredData() {
         addressCountry: "FR",
       }}
       geo={{
-        latitude: 44.8378,
-        longitude: -0.5792,
+        latitude: 49.2583,
+        longitude: 4.0317,
       }}
       sameAs={[
         "https://www.facebook.com/tonartisan",
