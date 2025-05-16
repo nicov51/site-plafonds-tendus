@@ -7,6 +7,7 @@ import ConfianceSection from '@components/ConfianceSection';
 import CallToAction from "@components/CallToAction";
 import type { Metadata } from 'next';
 import StructuredData from "@components/referencement/StructuredData";
+import ReviewButton from "@components/ReviewButton";
 
 export const metadata: Metadata = {
   title: "Plafond tendu Marne 51 - Artisan spécialiste depuis 2009",
@@ -38,19 +39,23 @@ export const metadata: Metadata = {
 export default function Home() {
     return (
       <>
-        <StructuredData />
-        <HeaderHero />
+        <StructuredData/>
+        <HeaderHero/>
         <Container
           maxWidth="lg"
-          sx={{ py: 4}}
+          sx={{py: 4}}
           component="main"
           aria-label="Contenu principal"
         >
-          <PlafondTenduSection />
-          <ConfianceSection />
+          <PlafondTenduSection/>
+          <ConfianceSection/>
         </Container>
-        <TestimonialsSlider />
-          <CallToAction />
+        <TestimonialsSlider/>
+        <div className="text-center mt-8 mb-12">
+          <h3 className="text-xl font-medium mb-4">Vous aussi, partagez votre expérience</h3>
+          <ReviewButton/>
+        </div>
+        <CallToAction/>
       </>
     );
 }
