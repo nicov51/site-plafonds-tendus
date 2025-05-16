@@ -25,6 +25,8 @@ export default function DevisForm() {
         body: JSON.stringify(formData),
       });
 
+      // TODO: gerer reponse succes
+
       if (response.ok) {
         setOpenSnackbar(true);
         setFormData({ nom: "", email: "", ville: "", date: "", surface: "", description: ""
