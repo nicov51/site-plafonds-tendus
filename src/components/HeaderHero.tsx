@@ -7,10 +7,10 @@ export default function HeaderHero() {
   return (
     <Box sx={{ width: "100%", height: "auto", position: "relative", marginTop: 0,  }}>
       <Image
-        src="/images/headerHero.png" // Assurez-vous que le chemin est correct
+        src="/images/headerHero.png"
         alt="Plafond tendu"
-        width={800} // Largeur fixe pour éviter les problèmes de responsive
-        height={400} // Hauteur fixe pour éviter les problèmes de responsive
+        width={800}
+        height={400}
         style={{ objectFit: "contain", width: "100%", height: "auto" }}
         priority
       />
