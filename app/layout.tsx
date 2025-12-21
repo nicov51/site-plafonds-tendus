@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Navbar from "@components/Navbar";
 import Footer from "@components/Footer";
 import React from "react";
+import { Box } from "@mui/material";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 
 
@@ -21,7 +22,9 @@ export default function RootLayout({
     <body className="bg-white text-black p-0 m-0">
     <AppRouterCacheProvider>
     <Navbar />
-    {children}
+      <Box >
+        {children}
+      </Box>
     <Footer />
     </AppRouterCacheProvider>
     </body>
