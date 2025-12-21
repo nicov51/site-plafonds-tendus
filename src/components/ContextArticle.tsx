@@ -28,6 +28,8 @@ export default function ContextArticle({
         borderRadius: 2,
         bgcolor: 'background.default',
       }}
+      role="article"  // accessibilité
+      aria-labelledby="article-title"
     >
       {/* Titre */}
       <Typography variant="h5" component="h3" color="primary" gutterBottom>
