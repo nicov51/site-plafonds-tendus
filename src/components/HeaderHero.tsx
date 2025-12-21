@@ -1,38 +1,37 @@
 "use client";
 
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import Image from "next/image";
 
 export default function HeaderHero() {
   return (
-    <Box sx={{ position: "relative", width: "100%", height: "400px" }}>
-      <Image
-        src="/images/header.jpg" // mets ton image ici
-        alt="Plafond tendu"
-        fill
-        style={{ objectFit: "cover" }}
-        priority
-      />
-      <Box
+    <Box
         sx={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          bgcolor: "rgba(0,0,0,0.4)",
-          color: "white",
-          textAlign: "center",
-          px: 2,
+            width: "100%",
+            height: "auto",
+            position: "relative",
+            marginTop: 0,
         }}
-      >
-        <Typography variant="h3" component="h1" fontWeight="bold">
-          Spécialiste du plafond tendu depuis 2009
-        </Typography>
-      </Box>
+        component="header"
+        role="banner"
+    >
+      <Image
+        src="/images/headerHero.png"
+        alt="Plafond tendu moderne dans un salon lumineux"
+        width={1920}
+        height={800}
+        style={{ objectFit: "cover", width: "100%", height: "auto" }}
+        priority
+        quality={90}  // ✅ Haute qualité pour image hero
+        sizes="100vw" // ✅ Prend toute la largeur
+        placeholder="blur"  // ✅ Effet de flou pendant chargement
+        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAB//2Q=="
+        onError={(e) => {
+          console.error("Erreur de chargement de l'image :", e)
+          e.currentTarget.src = '/images/realisation1.webp' // Image de secours
+        }}
+      />
     </Box>
   );
 }
+
