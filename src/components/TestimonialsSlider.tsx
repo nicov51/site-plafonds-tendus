@@ -1,19 +1,12 @@
 "use client"
 import { Star } from "@mui/icons-material";
 import reviews from "@/src/data/reviews";
-//import StructuredAggregateRating from "@components/referencement/StructuredAggregateRating";
-import dynamic from "next/dynamic";
 
-const StructuredAggregateRating = dynamic(
-  () => import("@components/referencement/StructuredAggregateRating"),
-  { ssr: false }
-);
 
 
 export default function TestimonialsSlider() {
   return (
     <section aria-label="Avis clients" className="w-full py-12 overflow-x-auto bg-gray-50">
-      <StructuredAggregateRating />
       <h2 className="text-center text-2xl font-semibold mb-6 text-primary">Ils nous ont fait confiance</h2>
       <div className="flex gap-6 px-6 w-max animate-scroll">
         {reviews.map((a, idx) => (

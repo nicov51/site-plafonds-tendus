@@ -2,8 +2,7 @@ import { Metadata } from "next";
 import { Container, Typography, Box, Divider } from "@mui/material";
 import FaqItem from "@components/FaqItem";
 import faqList from "@/src/data/faqList";
-import StructuredFaq from "@components/referencement/StructuredFaq";
-
+import ClientSeoScripts from '@components/referencement/ClientSeoScripts';
 
 export const metadata: Metadata = {
   title: "FAQ - Plafond Tendu | Votre Artisan Spécialiste",
@@ -13,7 +12,7 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <Container sx={{ py: 6 }}>
-      <StructuredFaq />
+      <ClientSeoScripts showFaq />
       <Typography variant="h3" component="h1" align="center" gutterBottom color="primary">
         Foire aux questions
       </Typography>
