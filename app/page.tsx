@@ -118,10 +118,10 @@ export default function Home() {
                 <ConfianceSection/>
             </Container>
             <TestimonialsSlider/>
-            <div className="text-center mt-8 mb-12">
-                <h3 className="text-xl font-medium mb-4">Vous aussi, partagez votre expérience</h3>
+            <section className="review-section">
+                <h3 className="review-section__title">Vous aussi, partagez votre expérience</h3>
                 <ReviewButton/>
-            </div>
+            </section>
             <CallToAction/>
         </>
     );
