@@ -2,141 +2,118 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import BeforeAfter from '@components/BeforeAfter'
+import BeforeAfterSlider from '@components/BeforeAfterSlider';
+import BeforeAfterSideBySide from '@components/BeforeAfterSideBySide';
 import ContextArticle from '@components/ContextArticle';
-import { Box, Paper } from '@mui/material';
 
 const avantApres = [
-  { avant: '/images/avantApres/avant1.webp', apres: '/images/avantApres/apres1.webp' },
-  { avant: '/images/avantApres/avant2.webp', apres: '/images/avantApres/apres2.webp' },
-  { avant: '/images/avantApres/avant3.webp', apres: '/images/avantApres/apres3.webp' },
-  { avant: '/images/avantApres/avant4.webp', apres: '/images/avantApres/apres4.webp' },
+    { avant: '/images/avantApres/avant1.webp', apres: '/images/avantApres/apres1.webp', alt: 'Salon avec ancien plafond' },
+    { avant: '/images/avantApres/avant2.webp', apres: '/images/avantApres/apres2.webp', alt: 'Cuisine avant rénovation' },
+    { avant: '/images/avantApres/avant3.webp', apres: '/images/avantApres/apres3.webp', alt: 'Chambre avant travaux' },
+    { avant: '/images/avantApres/avant4.webp', apres: '/images/avantApres/apres4.webp', alt: 'Salle de bain avant pose' },
 ];
 
-const carrousel = Array.from({ length: 6 }, (_, i) => `/images/realisations/realisation${i + 1}.webp`);
+const carrousel = Array.from({ length: 6 }, (_, i) => ({
+    src: `/images/realisations/realisation${i + 1}.webp`,
+    alt: `Réalisation plafond tendu projet ${i + 1}`,
+}));
 
 export default function RealisationsPage() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+    const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
 
-  return (
-    <div className="flex flex-col gap-20 py-16 px-6">
-      {/* Section Avant / Après */}
-      <section>
-        <h1 className="text-3xl font-bold text-center mb-10">Avant / Après</h1>
-        <div className="flex flex-col gap-16">
-          {avantApres.map((item, idx) => (
-            <div
-              key={idx}
-              className="flex flex-col md:flex-row items-center gap-6 md:gap-12"
-            >
-              {/* Avant */}
-              <div
-                className="relative cursor-pointer group"
-                onClick={() => setSelectedImage(item.avant)}
-              >
-                <Image
-                  src={item.avant}
-                  alt={`Avant ${idx + 1}`}
-                  width={500}
-                  height={400}
-                  className="rounded-xl filter brightness-75 grayscale group-hover:brightness-90 group-hover:grayscale-0 transition"
-                />
-                <span className="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 py-1 text-sm rounded">
-                  Avant
-                </span>
-              </div>
+    return (
+        <div className="realisations-page">
+            {/* Section Avant/Après avec SLIDER */}
+            <section className="avant-apres-section">
+                <h1 className="avant-apres-section__title">Avant / Après</h1>
 
-              {/* Après */}
-              <div
-                className="relative cursor-pointer group"
-                onClick={() => setSelectedImage(item.apres)}
-              >
-                <Image
-                  src={item.apres}
-                  alt={`Après ${idx + 1}`}
-                  width={500}
-                  height={400}
-                  className="rounded-xl shadow-lg group-hover:scale-[1.02] transition"
-                />
-                <span className="absolute bottom-2 left-2 bg-green-700 text-white px-2 py-1 text-sm rounded">
-                  Après
-                </span>
-              </div>
-            </div>
-          ))}
+                <div className="avant-apres-section__grid">
+                    {avantApres.map((item, idx) => (
+                        <BeforeAfterSlider
+                            key={idx}
+                            avant={item.avant}
+                            apres={item.apres}
+                            alt={item.alt}
+                        />
+                    ))}
+                </div>
+            </section>
+
+            {/* Section Contexte avec SIDE BY SIDE */}
+            <section className="contexte-section">
+                <div className="contexte-section__image">
+                    <BeforeAfterSideBySide
+                        beforeSrc="/images/avantApres/avant1.webp"
+                        afterSrc="/images/avantApres/apres1.webp"
+                        alt="Plafond salon"
+                    />
+                </div>
+
+                <div className="contexte-section__content">
+                    <ContextArticle
+                        title="Un salon transformé en moins de 24h"
+                        chapo="Intervention rapide, propre et sans poussière."
+                        highlights={[
+                            'Toile satinée blanche tendue à chaud',
+                            'Intégration de spots LED encastrés',
+                            'Profilé invisible (< 5mm)',
+                        ]}
+                        description="Notre client souhaitait moderniser son salon. Nous avons installé une toile tendue en une journée seulement."
+                        finalNote="Idéal pour les pièces de vie, sans gros travaux."
+                    />
+                </div>
+            </section>
+
+            {/* Section Carrousel */}
+            <section className="carrousel-section">
+                <h2 className="carrousel-section__title">Nos réalisations en images</h2>
+
+                <div className="carrousel-section__scroll">
+                    {carrousel.map((item, idx) => (
+                        <div
+                            key={idx}
+                            className="carrousel-section__item"
+                            onClick={() => setSelectedImage(item)}
+                        >
+                            <Image
+                                src={item.src}
+                                alt={item.alt}
+                                width={300}
+                                height={200}
+                                sizes="300px"
+                                quality={80}
+                                loading="lazy"
+                            />
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Modale */}
+            {selectedImage && (
+                <div className="image-modal" onClick={() => setSelectedImage(null)}>
+                    <div className="image-modal__content">
+                        <Image
+                            src={selectedImage.src}
+                            alt={selectedImage.alt}
+                            fill
+                            quality={100}
+                            priority
+                            sizes="100vw"
+                        />
+                    </div>
+                    <button
+                        className="image-modal__close"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedImage(null);
+                        }}
+                    >
+                        ✕
+                    </button>
+                </div>
+            )}
         </div>
-      </section>
-
-      <section className="space-y-12 py-12">
-        <Paper
-          sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            alignItems: 'stretch',
-            gap: 4,
-            my: 6,
-            p: { xs: 2, md: 4 },
-            borderRadius: 2,
-          }}
-        >
-          <Box sx={{ flex: 1, minHeight: { xs: 300, sm: 400, md: 'auto' },}}>
-            <BeforeAfter
-              beforeSrc="/images/avantApres/avant1.webp"
-              afterSrc="/images/avantApres/apres1.webp"
-              alt="Plafond salon"
-            />
-          </Box>
-
-          <ContextArticle
-            title="Un salon transformé en moins de 24h"
-            chapo="Intervention rapide, propre et sans poussière, pour un résultat impeccable."
-            highlights={[
-              'Toile satinée blanche tendue à chaud',
-              'Intégration de spots LED encastrés',
-              'Profilé invisible (< 5mm) pour une finition haut de gamme',
-            ]}
-            description="Dans ce projet, notre client souhaitait redonner un coup d’éclat à son salon tout en modernisant l’éclairage. Nous avons retiré l’ancien faux plafond et installé une toile tendue en une journée seulement. Résultat : une pièce transformée, lumineuse et élégante."
-            finalNote="Ce type de projet est idéal pour les pièces de vie, sans engager de gros travaux."
-          />
-        </Paper>
-
-      </section>
-
-      {/* Section Réalisations */}
-      <section>
-        <h2 className="text-2xl font-semibold text-center mb-6">Nos réalisations en images</h2>
-        <div className="flex gap-4 overflow-x-auto pb-4">
-          {carrousel.map((src, idx) => (
-            <Image
-              key={idx}
-              src={src}
-              alt={`Réalisation ${idx + 1}`}
-              width={300}
-              height={200}
-              className="rounded-lg shrink-0 cursor-pointer"
-              onClick={() => setSelectedImage(src)}
-            />
-          ))}
-        </div>
-      </section>
-
-      {/* Modale image agrandie */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
-          onClick={() => setSelectedImage(null)}
-        >
-          <Image
-            src={selectedImage}
-            alt="Zoom"
-            width={1000}
-            height={800}
-            className="max-w-full max-h-[90vh] rounded-lg"
-          />
-        </div>
-      )}
-    </div>
-  );
+    );
 }
-
 

@@ -1,58 +1,44 @@
-"use client"
+"use client";
 import { Star } from "@mui/icons-material";
 import reviews from "@/src/data/reviews";
-//import StructuredAggregateRating from "@components/referencement/StructuredAggregateRating";
-import dynamic from "next/dynamic";
-
-const StructuredAggregateRating = dynamic(
-  () => import("@components/referencement/StructuredAggregateRating"),
-  { ssr: false }
-);
-
 
 export default function TestimonialsSlider() {
-  return (
-    <section aria-label="Avis clients" className="w-full py-12 overflow-x-auto bg-gray-50">
-      <StructuredAggregateRating />
-      <h2 className="text-center text-2xl font-semibold mb-6 text-primary">Ils nous ont fait confiance</h2>
-      <div className="flex gap-6 px-6 w-max animate-scroll">
-        {reviews.map((a, idx) => (
-          <div
-            key={idx}
-            className="min-w-[300px] max-w-[320px] bg-white rounded-xl shadow-md p-6 border border-gray-200"
-          >
-            <p className="font-semibold text-lg mb-2">{a.nom}</p>
-            <p className="text-sm text-gray-700 italic mb-3">{`« ${a.commentaire} »`}</p>
-            <div className="flex items-center gap-1 mb-2">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  fontSize="small"
-                  className={i < a.note ? "text-yellow-500" : "text-gray-300"}
-                />
-              ))}
-            </div>
-            <p className="text-xs text-gray-500">{a.ville} – {new Date(a.date).toLocaleDateString('fr-FR', {
-              year: 'numeric',
-              month: 'long'
-            })}</p>
-          </div>
-        ))}
-      </div>
-      <style jsx>{`
-          @keyframes scroll {
-              0% {
-                  transform: translateX(0%);
-              }
-              100% {
-                  transform: translateX(-50%);
-              }
-          }
+    // Dupliquer les avis pour l'effet de boucle infinie
+    const duplicatedReviews = [...reviews, ...reviews];
 
-          .animate-scroll {
-              animation: scroll 40s linear infinite;
-          }
-      `}</style>
-    </section>
-  );
+    return (
+        <section className="testimonials" aria-label="Avis clients">
+            <h2 className="testimonials__title">Ils nous ont fait confiance</h2>
+
+            <div className="testimonials__slider-wrapper">
+                <div className="testimonials__slider">
+                    {duplicatedReviews.map((review, idx) => (
+                        <article key={idx} className="testimonials__card">
+                            <p className="testimonials__author">{review.nom}</p>
+
+                            <p className="testimonials__comment">
+                                {review.commentaire}
+                            </p>
+
+                            <div className="testimonials__rating">
+                                {[...Array(5)].map((_, i) => (
+                                    <Star
+                                        key={i}
+                                        className={`star ${i < review.note ? 'star--filled' : 'star--empty'}`}
+                                    />
+                                ))}
+                            </div>
+
+                            <p className="testimonials__meta">
+                                {review.ville} – {new Date(review.date).toLocaleDateString('fr-FR', {
+                                year: 'numeric',
+                                month: 'long'
+                            })}
+                            </p>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
 }

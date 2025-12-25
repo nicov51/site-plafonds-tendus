@@ -1,0 +1,105 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+// ========================================
+// ZONE INTERVENTION
+// ========================================
+.zone-intervention {
+  padding: $spacing-3xl 0;
+  background: $color-white;
+
+  &__container {
+    @include container;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    font-weight: 700;
+    color: $color-dark;
+    margin-bottom: $spacing-xl;
+    text-align: center;
+
+    @include md {
+      font-size: $font-size-3xl;
+      text-align: left;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-2xl;
+    align-items: start;
+
+    @include lg {
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-3xl;
+    }
+  }
+
+  &__image-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    box-shadow: $shadow-lg;
+    transition: transform $transition-base;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__text-content {
+    // Conteneur du texte et de la liste
+  }
+
+  &__description {
+    font-size: $font-size-base;
+    line-height: 1.8;
+    color: $color-text;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__list {
+    @include reset-list;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: $spacing-sm $spacing-md;
+    margin-bottom: $spacing-xl;
+    padding: $spacing-lg;
+    background: $color-light;
+    border-radius: $border-radius-md;
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-size: $font-size-sm;
+    color: $color-dark;
+    font-weight: 500;
+
+    &::before {
+      content: '📍';
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+  }
+
+  &__note {
+    font-size: $font-size-sm;
+    color: $color-text;
+    font-style: italic;
+    padding: $spacing-md;
+    background: rgba($color-primary, 0.05);
+    border-left: 4px solid $color-primary;
+    border-radius: $border-radius-sm;
+  }
+}

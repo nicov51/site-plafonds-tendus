@@ -1,0 +1,201 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+// ========================================
+// NAVBAR
+// ========================================
+.navbar {
+  background: $color-primary;
+  color: $color-white;
+  box-shadow: $shadow-md;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-dropdown;
+
+  &__toolbar {
+    @include container;
+    @include flex-between;
+    padding: $spacing-sm 0;
+    min-height: 64px;
+  }
+
+  &__logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__logo {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+  }
+
+  // Navigation desktop
+  &__nav {
+    display: none;
+    align-items: center;
+    gap: $spacing-xs;
+
+    @include md {
+      display: flex;
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    padding: $spacing-sm $spacing-md;
+    color: $color-white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: $font-size-base;
+    border-radius: $border-radius-md;
+    transition: all $transition-base;
+    white-space: nowrap;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    // Bouton CTA
+    &--cta {
+      background: #059669;
+
+      &:hover {
+        background: #047857;
+        transform: translateY(-1px);
+        box-shadow: $shadow-md;
+      }
+    }
+  }
+
+  // Bouton menu mobile
+  &__menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: $color-white;
+    cursor: pointer;
+    transition: background $transition-fast;
+    border-radius: $border-radius-sm;
+
+    @include md {
+      display: none;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+// ========================================
+// DRAWER MOBILE
+// ========================================
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 75%;
+  max-width: 300px;
+  height: 100vh;
+  background: $color-primary;
+  color: $color-white;
+  box-shadow: $shadow-xl;
+  transform: translateX(100%);
+  transition: transform $transition-base;
+  z-index: $z-index-modal;
+  overflow-y: auto;
+
+  &--open {
+    transform: translateX(0);
+  }
+
+  &__close {
+    position: absolute;
+    top: $spacing-sm;
+    right: $spacing-sm;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: $color-white;
+    cursor: pointer;
+    border-radius: $border-radius-sm;
+    transition: background $transition-fast;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    margin-top: $spacing-3xl;
+    margin-bottom: $spacing-xl;
+
+    img {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  &__nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__link {
+    display: block;
+    padding: $spacing-md $spacing-lg;
+    color: $color-white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background $transition-fast;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+// Overlay
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: $z-index-modal - 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: all $transition-base;
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}

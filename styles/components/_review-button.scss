@@ -1,0 +1,42 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+// ========================================
+// REVIEW BUTTON
+// ========================================
+.review-button {
+  @include btn-primary;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  background: $color-primary;
+  color: $color-white;
+  padding: $spacing-md $spacing-xl;
+  border-radius: $border-radius-lg;
+  font-weight: 600;
+  font-size: $font-size-base;
+  text-decoration: none;
+  transition: all $transition-base;
+  box-shadow: $shadow-sm;
+
+  &:hover {
+    background: $color-primary-dark;
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: $shadow-sm;
+  }
+
+  // Icône étoile optionnelle
+  &__icon {
+    font-size: 1.25rem;
+  }
+
+  @include mobile-only {
+    width: 100%;
+    justify-content: center;
+  }
+}

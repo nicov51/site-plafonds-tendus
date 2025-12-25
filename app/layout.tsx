@@ -1,4 +1,4 @@
-import "./globals.css";
+import "../styles/globals.scss";
 import type { Metadata } from "next";
 import Navbar from "@components/Navbar";
 import Footer from "@components/Footer";
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-    <body className="bg-white text-black p-0 m-0">
+    <body>
     <AppRouterCacheProvider>
     <Navbar />
       <Box >
