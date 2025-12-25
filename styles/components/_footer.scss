@@ -10,6 +10,11 @@
   padding: $spacing-3xl 0 $spacing-xl;
   margin-top: auto;
 
+  @include dark-mode {
+    background: #0d0d0d;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
   &__container {
     @include container;
   }
@@ -40,6 +45,10 @@
     font-weight: 600;
     margin-bottom: $spacing-md;
     color: $color-white;
+
+    @include dark-mode {
+      color: $text-dark;
+    }
   }
 
   &__list {
@@ -66,6 +75,14 @@
       color: $color-white;
       text-decoration: underline;
     }
+
+    @include dark-mode {
+      color: rgba(255, 255, 255, 0.7);
+
+      &:hover {
+        color: $primary;
+      }
+    }
   }
 
   &__text {
@@ -73,6 +90,10 @@
     font-size: $font-size-sm;
     line-height: 1.8;
     margin: 0;
+
+    @include dark-mode {
+      color: rgba(255, 255, 255, 0.7);
+    }
   }
 
   &__copyright {
@@ -81,5 +102,9 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
     font-size: $font-size-sm;
+
+    @include dark-mode {
+      color: rgba(255, 255, 255, 0.5);
+    }
   }
 }

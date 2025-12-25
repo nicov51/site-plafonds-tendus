@@ -1,9 +1,7 @@
 @use '../utils/variables' as *;
 @use '../utils/mixins' as *;
+@use 'sass:color';
 
-// ========================================
-// REVIEW BUTTON
-// ========================================
 .review-button {
   @include btn-primary;
   display: inline-flex;
@@ -19,10 +17,19 @@
   transition: all $transition-base;
   box-shadow: $shadow-sm;
 
+  @include dark-mode {
+    background: $primary;
+    color: $color-dark;
+  }
+
   &:hover {
     background: $color-primary-dark;
     transform: translateY(-2px);
     box-shadow: $shadow-md;
+
+    @include dark-mode {
+      background: color.adjust($primary, $lightness: 10%);
+    }
   }
 
   &:active {
@@ -30,7 +37,6 @@
     box-shadow: $shadow-sm;
   }
 
-  // Icône étoile optionnelle
   &__icon {
     font-size: 1.25rem;
   }
