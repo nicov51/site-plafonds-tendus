@@ -1,14 +1,15 @@
 @use '../utils/variables' as *;
 @use '../utils/mixins' as *;
 
-// ========================================
-// TESTIMONIALS SLIDER
-// ========================================
 .testimonials {
   width: 100%;
   padding: $spacing-3xl 0;
   background: $color-light;
   overflow: hidden;
+
+  @include dark-mode {
+    background: $bg-dark-secondary;
+  }
 
   &__title {
     text-align: center;
@@ -16,6 +17,10 @@
     font-weight: 600;
     margin-bottom: $spacing-2xl;
     color: $color-primary;
+
+    @include dark-mode {
+      color: $primary;
+    }
 
     @include mobile-only {
       font-size: $font-size-xl;
@@ -26,9 +31,8 @@
   &__slider-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-
-    // Masquer la scrollbar
     scrollbar-width: none;
+
     &::-webkit-scrollbar {
       display: none;
     }
@@ -46,7 +50,6 @@
       padding: 0 $spacing-md;
     }
 
-    // Pause au hover
     &:hover {
       animation-play-state: paused;
     }
@@ -62,6 +65,12 @@
     border: 1px solid $color-border;
     transition: all $transition-base;
 
+    @include dark-mode {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    }
+
     @include mobile-only {
       min-width: 280px;
       max-width: 300px;
@@ -71,6 +80,10 @@
     &:hover {
       transform: translateY(-4px);
       box-shadow: $shadow-lg;
+
+      @include dark-mode {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+      }
     }
   }
 
@@ -79,6 +92,10 @@
     font-size: $font-size-lg;
     margin-bottom: $spacing-sm;
     color: $color-dark;
+
+    @include dark-mode {
+      color: $text-dark;
+    }
   }
 
   &__comment {
@@ -87,6 +104,10 @@
     font-style: italic;
     margin-bottom: $spacing-md;
     line-height: 1.6;
+
+    @include dark-mode {
+      color: rgba(255, 255, 255, 0.7);
+    }
 
     &::before {
       content: '« ';
@@ -113,6 +134,10 @@
 
       &--empty {
         color: #d1d5db;
+
+        @include dark-mode {
+          color: #4b5563;
+        }
       }
     }
   }
@@ -120,12 +145,13 @@
   &__meta {
     font-size: $font-size-xs;
     color: $color-text-light;
+
+    @include dark-mode {
+      color: rgba(255, 255, 255, 0.5);
+    }
   }
 }
 
-// ========================================
-// ANIMATION
-// ========================================
 @keyframes scroll {
   0% {
     transform: translateX(0);

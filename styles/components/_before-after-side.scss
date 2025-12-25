@@ -1,9 +1,6 @@
 @use '../utils/variables' as *;
 @use '../utils/mixins' as *;
 
-// ========================================
-// COMPOSANT SIDE BY SIDE (pour section contextuelle)
-// ========================================
 .before-after-side {
   position: relative;
   width: 100%;
@@ -13,6 +10,10 @@
   overflow: hidden;
   border-radius: $border-radius-lg;
   box-shadow: $shadow-md;
+
+  @include dark-mode {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  }
 
   @include sm {
     height: 400px;
@@ -58,6 +59,11 @@
     letter-spacing: 1px;
     box-shadow: $shadow-sm;
 
+    @include dark-mode {
+      background: rgba(0, 0, 0, 0.85);
+      color: $text-dark;
+    }
+
     &--before {
       left: $spacing-md;
     }
@@ -77,5 +83,10 @@
     z-index: 10;
     transform: translateX(-50%);
     box-shadow: 0 0 10px rgba($color-primary, 0.5);
+
+    @include dark-mode {
+      background: $primary;
+      box-shadow: 0 0 15px rgba($primary, 0.8);
+    }
   }
 }

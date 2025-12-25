@@ -12,6 +12,11 @@
   top: 0;
   z-index: $z-index-dropdown;
 
+  @include dark-mode {
+    background: rgba(26, 26, 26, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
   &__toolbar {
     @include container;
     @include flex-between;
@@ -58,6 +63,15 @@
       background: rgba(255, 255, 255, 0.15);
     }
 
+    @include dark-mode {
+      color: $text-dark;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: $primary;
+      }
+    }
+
     // Bouton CTA
     &--cta {
       background: #059669;
@@ -66,6 +80,15 @@
         background: #047857;
         transform: translateY(-1px);
         box-shadow: $shadow-md;
+      }
+
+      @include dark-mode {
+        background: $primary;
+        color: $color-dark;
+
+        &:hover {
+          background: $color-primary-light;
+        }
       }
     }
   }
@@ -93,6 +116,10 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
+    @include dark-mode {
+      color: $text-dark;
+    }
+
     svg {
       width: 24px;
       height: 24px;
@@ -118,6 +145,11 @@
   z-index: $z-index-modal;
   overflow-y: auto;
 
+  @include dark-mode {
+    background: #1a1a1a;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
   &--open {
     transform: translateX(0);
   }
@@ -140,6 +172,10 @@
 
     &:hover {
       background: rgba(255, 255, 255, 0.1);
+    }
+
+    @include dark-mode {
+      color: $text-dark;
     }
 
     svg {
@@ -181,6 +217,19 @@
     &:hover {
       background: rgba(255, 255, 255, 0.1);
     }
+
+    @include dark-mode {
+      color: $text-dark;
+    }
+  }
+
+  // ✅ DARK MODE DANS LE DRAWER
+  &__dark-mode {
+    display: flex;
+    justify-content: center;
+    padding: $spacing-xl;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -197,5 +246,9 @@
   &--visible {
     opacity: 1;
     visibility: visible;
+  }
+
+  @include dark-mode {
+    background: rgba(0, 0, 0, 0.7);
   }
 }
