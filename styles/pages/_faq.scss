@@ -1,12 +1,13 @@
 @use '../utils/variables' as *;
 @use '../utils/mixins' as *;
 
-// ========================================
-// PAGE FAQ
-// ========================================
 .faq-page {
   padding: $spacing-3xl 0;
   background: $color-white;
+
+  @include dark-mode {
+    background: $bg-dark;
+  }
 
   &__container {
     @include container;
@@ -19,6 +20,10 @@
     text-align: center;
     margin-bottom: $spacing-md;
 
+    @include dark-mode {
+      color: $primary;
+    }
+
     @include md {
       font-size: $font-size-4xl;
     }
@@ -29,12 +34,20 @@
     color: $color-text;
     text-align: center;
     margin-bottom: $spacing-2xl;
+
+    @include dark-mode {
+      color: $text-dark;
+    }
   }
 
   &__divider {
     height: 2px;
     background: linear-gradient(to right, transparent, $color-primary, transparent);
     margin: $spacing-2xl 0;
+
+    @include dark-mode {
+      background: linear-gradient(to right, transparent, $primary, transparent);
+    }
   }
 
   &__list {

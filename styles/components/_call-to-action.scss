@@ -7,11 +7,19 @@
   background: $color-white;
   text-align: center;
 
+  @include dark-mode {
+    background: $bg-dark;
+  }
+
   &__title {
     font-size: $font-size-3xl;
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: $color-dark;
+
+    @include dark-mode {
+      color: $text-dark;
+    }
 
     @include sm {
       font-size: 2.25rem;
@@ -19,13 +27,17 @@
   }
 
   &__description {
-    color: #475569; // Slate-600
+    color: #475569;
     margin-bottom: 2.5rem;
     max-width: 36rem;
     margin-left: auto;
     margin-right: auto;
     font-size: $font-size-lg;
     line-height: 1.75;
+
+    @include dark-mode {
+      color: rgba(255, 255, 255, 0.7);
+    }
   }
 
   &__buttons {
@@ -56,19 +68,39 @@
       color: $color-white;
 
       &:hover {
-        background: #0f172a; // Slate-800
+        background: #0f172a;
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      @include dark-mode {
+        background: $primary;
+        color: $color-dark;
+
+        &:hover {
+          background: $color-primary-light;
+        }
       }
     }
 
     &--secondary {
       background: $color-white;
       color: $color-dark;
-      border: 2px solid #cbd5e1; // Slate-300
+      border: 2px solid #cbd5e1;
 
       &:hover {
         border-color: $color-dark;
         box-shadow: $shadow-lg;
+      }
+
+      @include dark-mode {
+        background: transparent;
+        color: $text-dark;
+        border-color: rgba(255, 255, 255, 0.2);
+
+        &:hover {
+          border-color: $primary;
+          background: rgba(255, 255, 255, 0.05);
+        }
       }
     }
   }

@@ -4,6 +4,7 @@ import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
+import DarkModeToggle from "./DarkModeToggle";
 
 const navItems = [
     { label: "Accueil", href: "/" },
@@ -47,6 +48,9 @@ export default function Navbar() {
                                 {item.label}
                             </Link>
                         ))}
+
+                        {/* ✅ BOUTON DARK MODE */}
+                        <DarkModeToggle />
                     </div>
 
                     {/* Bouton menu mobile */}
@@ -93,7 +97,14 @@ export default function Navbar() {
                         </li>
                     ))}
                 </ul>
+
+                {/* ✅ DARK MODE DANS LE DRAWER AUSSI */}
+                <div className="drawer__dark-mode">
+                    <DarkModeToggle />
+                </div>
             </div>
         </>
     );
 }
+
+

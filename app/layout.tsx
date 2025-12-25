@@ -6,7 +6,6 @@ import React from "react";
 import { Box } from "@mui/material";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 
-
 export const metadata: Metadata = {
   title: "Plafonds tendus",
   description: "Artisan spécialiste du plafond tendu depuis 2009",
@@ -18,17 +17,35 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
-    <body>
-    <AppRouterCacheProvider>
-    <Navbar />
-      <Box >
-        {children}
-      </Box>
-    <Footer />
-    </AppRouterCacheProvider>
-    </body>
-    </html>
+      <html lang="fr" suppressHydrationWarning>
+      <head>
+        {/* ✅ Script qui s'exécute AVANT React */}
+        <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              (function() {
+                try {
+                  if (localStorage.getItem('darkMode') === 'true') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+            }}
+        />
+      </head>
+      <body>
+      <AppRouterCacheProvider>
+        <Navbar />
+        <Box component="main">
+          {children}
+        </Box>
+        <Footer />
+      </AppRouterCacheProvider>
+      </body>
+      </html>
   );
 }
+
+
 
