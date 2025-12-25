@@ -1,0 +1,96 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.before-after-slider {
+  display: grid;
+  grid-template-columns: 2fr 3fr; // Avant + petit, Après + grand
+  gap: $spacing-md; // Espace entre les 2 images
+
+  @include sm {
+    gap: $spacing-sm;
+  }
+
+  // Image Avant (à gauche)
+  &__before {
+    position: relative;
+    aspect-ratio: 3/4; // Format portrait
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    opacity: 0.8;
+    transition: all $transition-base;
+    box-shadow: $shadow-md;
+
+    @include sm {
+      aspect-ratio: 4/5;
+    }
+
+    &:hover {
+      opacity: 1;
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+    }
+
+    img {
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  // Image Après (à droite)
+  &__after {
+    position: relative;
+    aspect-ratio: 4/3; // Format paysage
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    transition: all $transition-base;
+    box-shadow: $shadow-lg;
+
+    @include sm {
+      aspect-ratio: 1/1;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-xl;
+    }
+
+    img {
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  // Labels "Avant" / "Après"
+  &__label {
+    position: absolute;
+    top: $spacing-sm;
+    left: $spacing-sm;
+    padding: $spacing-xs $spacing-sm;
+    background: rgba(0, 0, 0, 0.8);
+    color: $color-white;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    border-radius: $border-radius;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(8px);
+    z-index: 2;
+
+    @include sm {
+      font-size: $font-size-xs;
+      padding: 4px 8px;
+      top: 8px;
+      left: 8px;
+    }
+
+    &--highlight {
+      background: linear-gradient(135deg, $color-primary, $color-primary-light);
+      box-shadow: 0 2px 12px rgba($color-primary, 0.4);
+
+      @include sm {
+        font-size: $font-size-xs;
+      }
+    }
+  }
+}
+

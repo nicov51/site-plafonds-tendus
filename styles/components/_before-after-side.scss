@@ -1,0 +1,81 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+// ========================================
+// COMPOSANT SIDE BY SIDE (pour section contextuelle)
+// ========================================
+.before-after-side {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 300px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+
+  @include sm {
+    height: 400px;
+  }
+
+  @include md {
+    height: 500px;
+  }
+
+  &__images {
+    position: absolute;
+    inset: 0;
+    display: flex;
+  }
+
+  &__image-wrapper {
+    position: relative;
+    width: 50%;
+    overflow: hidden;
+  }
+
+  &__image {
+    object-fit: cover;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: $spacing-md;
+    z-index: 10;
+    background: rgba($color-white, 0.95);
+    color: $color-dark;
+    padding: $spacing-xs $spacing-md;
+    border-radius: $border-radius;
+    font-weight: 700;
+    font-size: $font-size-sm;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: $shadow-sm;
+
+    &--before {
+      left: $spacing-md;
+    }
+
+    &--after {
+      right: $spacing-md;
+    }
+  }
+
+  &__divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: $color-primary;
+    z-index: 10;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba($color-primary, 0.5);
+  }
+}
