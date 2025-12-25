@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  next-app:
+    container_name: next-app-dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev  # Voir ci-dessous pour le contenu
+    volumes:
+      - ./:/app                # Montage du code en temps réel
+      - /app/node_modules      # Isolation des modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    name: my_network
