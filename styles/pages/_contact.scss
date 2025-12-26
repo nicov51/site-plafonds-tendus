@@ -1,0 +1,24 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.page-contact {
+  min-height: 100vh;
+  padding: 4rem 0;
+  background: $color-light;
+
+  @include dark-mode {
+    background: $bg-dark;
+  }
+
+  &__title {
+    font-size: $font-size-4xl;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: $color-dark;
+
+    @include dark-mode {
+      color: $text-dark;
+    }
+  }
+}
