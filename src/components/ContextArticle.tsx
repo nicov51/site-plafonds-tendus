@@ -1,53 +1,80 @@
 'use client';
 
+import { Box, Typography, Paper, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+
 type ContextArticleProps = {
-    title: string;
-    chapo: string;
-    highlights: string[];
-    description: string;
-    finalNote?: string;
+  title: string;
+  chapo: string;
+  highlights: string[];
+  description: string;
+  finalNote?: string;
 };
 
 export default function ContextArticle({
-                                           title,
-                                           chapo,
-                                           highlights,
-                                           description,
-                                           finalNote,
+                                         title,
+                                         chapo,
+                                         highlights,
+                                         description,
+                                         finalNote,
                                        }: ContextArticleProps) {
-    return (
-        <article
-            className="context-article"
-            role="article"
-            aria-labelledby="article-title"
-        >
-            <h3 id="article-title" className="context-article__title">
-                {title}
-            </h3>
+  return (
+    <Paper
+      component="article"
+      elevation={2}
+      sx={{
+        flex: 1,
+        p: { xs: 3, md: 4 },
+        borderRadius: 2,
+        bgcolor: 'background.default',
+      }}
+      role="article"  // accessibilité
+      aria-labelledby="article-title"
+    >
+      {/* Titre */}
+      <Typography variant="h5" component="h3" color="primary" gutterBottom>
+        {title}
+      </Typography>
 
-            <div className="context-article__chapo">
-                <p>{chapo}</p>
-            </div>
+      {/* Chapo encadré */}
+      <Box
+        sx={{
+          borderLeft: '4px solid',
+          borderColor: 'primary.main',
+          bgcolor: 'background.paper',
+          px: 2,
+          py: 1,
+          mb: 3,
+        }}
+      >
+        <Typography variant="subtitle1" color="text.primary">
+          {chapo}
+        </Typography>
+      </Box>
 
-            <ul className="context-article__highlights">
-                {highlights.map((item, index) => (
-                    <li key={index} className="context-article__highlight-item">
-                        <span className="context-article__highlight-item-icon">✓</span>
-                        <span className="context-article__highlight-item-text">{item}</span>
-                    </li>
-                ))}
-            </ul>
+      {/* Liste des points forts */}
+      <List dense>
+        {highlights.map((item, index) => (
+          <ListItem key={index} disableGutters>
+            <ListItemIcon sx={{ minWidth: 32 }}>
+              <CheckCircleIcon color="primary" fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary={item} />
+          </ListItem>
+        ))}
+      </List>
 
-            <p className="context-article__description">
-                {description}
-            </p>
+      {/* Description longue */}
+      <Typography paragraph sx={{ mt: 3, textAlign: 'justify' }}>
+        {description}
+      </Typography>
 
-            {finalNote && (
-                <p className="context-article__final-note">
-                    {finalNote}
-                </p>
-            )}
-        </article>
-    );
+      {/* Note finale */}
+      {finalNote && (
+        <Typography variant="body2" color="text.secondary">
+          ➤ {finalNote}
+        </Typography>
+      )}
+    </Paper>
+  );
 }
-

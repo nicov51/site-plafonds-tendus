@@ -1,17 +1,14 @@
 
 import Link from 'next/link';
-import StarIcon from '@mui/icons-material/Star';
-
 export default function ReviewButton() {
   return (
-      <Link
-          href="https://g.page/r/CRx0uF1_cidCEBM/review"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="review-button"
-      >
-        <StarIcon className="review-button__icon" />
-        Laisser un avis
-      </Link>
+    <Link
+      href="https://g.page/r/CRx0uF1_cidCEBM/review" // Remplacez par votre lien
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bg-blue-600 text-dark px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+    >
+      Laisser un avis
+    </Link>
   );
 }

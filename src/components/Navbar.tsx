@@ -1,10 +1,21 @@
 "use client";
+
 import Link from "next/link";
-import Image from "next/image";
+import {
+    AppBar,
+    Toolbar,
+    Box,
+    Button,
+    IconButton,
+    Drawer,
+    List,
+    ListItem,
+    ListItemText,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import Image from "next/image";
 import { useState } from "react";
-import DarkModeToggle from "./DarkModeToggle";
 
 const navItems = [
     { label: "Accueil", href: "/" },
@@ -21,90 +32,120 @@ export default function Navbar() {
         setMobileOpen(!mobileOpen);
     };
 
+    const drawer = (
+        <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+            <IconButton sx={{ position: "absolute", top: 8, right: 8 }}>
+                <CloseIcon />
+            </IconButton>
+            <Box sx={{ mt: 6, mb: 2 }}>
+                <Image src="/logo.png" alt="Logo" width={48} height={48} />
+            </Box>
+            <List>
+                {navItems.map((item) => (
+                    <ListItem key={item.href} disablePadding>
+                        <Button
+                            component={Link}
+                            href={item.href}
+                            sx={{
+                                width: "100%",
+                                textTransform: "none",
+                                justifyContent: "flex-start",
+                                px: 3,
+                                py: 1.5,
+                                color: "white",
+                                "&:hover": {
+                                    backgroundColor: "rgba(255,255,255,0.1)",
+                                },
+                            }}
+                        >
+                            <ListItemText primary={item.label} />
+                        </Button>
+                    </ListItem>
+                ))}
+            </List>
+        </Box>
+    );
+
     return (
         <>
-            <nav className="navbar">
-                <div className="navbar__toolbar">
-                    {/* Logo */}
-                    <Link href="/" className="navbar__logo-link">
-                        <Image
-                            src="/logo.png"
-                            alt="Logo Plafonds Tendus"
-                            width={64}
-                            height={64}
-                            priority
-                            className="navbar__logo"
-                        />
-                    </Link>
+            <AppBar position="static" elevation={2} sx={{ backgroundColor: "#1e40af", color: "white" }}>
+                <Toolbar sx={{ justifyContent: "space-between", alignItems: "center", py: 1 }}>
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                        <Link href="/" style={{ display: "flex", alignItems: "center" }}>
+                            <Image src="/logo.png" alt="Logo Plafonds Tendus" width={64} height={64} priority />
+                        </Link>
+                    </Box>
 
-                    {/* Navigation desktop */}
-                    <div className="navbar__nav">
+                    <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 1 }}>
                         {navItems.map((item) => (
-                            <Link
+                            <Button
                                 key={item.href}
+                                component={Link}
                                 href={item.href}
-                                className={`navbar__link ${item.isCTA ? 'navbar__link--cta' : ''}`}
+                                sx={{
+                                    textTransform: "none",
+                                    color: "white",
+                                    fontWeight: 500,
+                                    px: 2,
+                                    py: 1,
+                                    borderRadius: "0.5rem",
+                                    transition: "all 0.2s ease",
+                                    ...(item.isCTA
+                                        ? {
+                                            backgroundColor: "#059669",
+                                            "&:hover": {
+                                                backgroundColor: "#047857",
+                                                transform: "translateY(-1px)",
+                                                boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                                            },
+                                        }
+                                        : {
+                                            "&:hover": {
+                                                backgroundColor: "rgba(255,255,255,0.15)",
+                                                color: "white",
+                                            },
+                                        }),
+                                }}
                             >
                                 {item.label}
-                            </Link>
+                            </Button>
                         ))}
+                    </Box>
 
-                        {/* ✅ BOUTON DARK MODE */}
-                        <DarkModeToggle />
-                    </div>
-
-                    {/* Bouton menu mobile */}
-                    <button
-                        className="navbar__menu-btn"
+                    <IconButton
+                        color="inherit"
+                        edge="end"
                         onClick={handleDrawerToggle}
+                        sx={{ display: { md: "none" } }}
                         aria-label="Ouvrir le menu"
                     >
                         <MenuIcon />
-                    </button>
-                </div>
-            </nav>
+                    </IconButton>
+                </Toolbar>
+            </AppBar>
 
-            {/* Overlay */}
-            <div
-                className={`drawer-overlay ${mobileOpen ? 'drawer-overlay--visible' : ''}`}
-                onClick={handleDrawerToggle}
-            />
-
-            {/* Drawer mobile */}
-            <div className={`drawer ${mobileOpen ? 'drawer--open' : ''}`}>
-                <button
-                    className="drawer__close"
-                    onClick={handleDrawerToggle}
-                    aria-label="Fermer le menu"
-                >
-                    <CloseIcon />
-                </button>
-
-                <div className="drawer__logo">
-                    <Image src="/logo.png" alt="Logo" width={48} height={48} />
-                </div>
-
-                <ul className="drawer__nav">
-                    {navItems.map((item) => (
-                        <li key={item.href} className="drawer__item">
-                            <Link
-                                href={item.href}
-                                className="drawer__link"
-                                onClick={handleDrawerToggle}
-                            >
-                                {item.label}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-
-                {/* ✅ DARK MODE DANS LE DRAWER AUSSI */}
-                <div className="drawer__dark-mode">
-                    <DarkModeToggle />
-                </div>
-            </div>
+            <Drawer
+                anchor="right"
+                open={mobileOpen}
+                onClose={handleDrawerToggle}
+                PaperProps={{
+                    sx: {
+                        backgroundColor: "#1e40af",
+                        color: "white",
+                        width: "75%",
+                        maxWidth: "300px",
+                    },
+                }}
+            >
+                {drawer}
+            </Drawer>
         </>
     );
 }
+
+
+
+
+
 
 
