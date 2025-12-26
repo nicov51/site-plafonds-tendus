@@ -8,21 +8,6 @@ First, run the development server:
 npm run dev
 ```
 
-## build
-```bash
-npm run build
-```
-
-## build avec analyse
-```bash
-$env:ANALYZE="true"; npm run build
-```
-
-## puis
-```bash
-npm run start
-```
-
 
 ## Docker
 
