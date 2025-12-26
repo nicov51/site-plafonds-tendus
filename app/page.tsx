@@ -1,11 +1,11 @@
-import HeaderHero from "@components/HeaderHero";
-import TestimonialsSlider from "@components/TestimonialsSlider";
+import HeaderHero from "@/components/HeaderHero";
+import TestimonialsSlider from "@/components/TestimonialsSlider";
 import { Container } from '@mui/material';
-import PlafondTenduSection from '@components/PlafondTenduSection';
-import ConfianceSection from '@components/ConfianceSection';
-import CallToAction from "@components/CallToAction";
+import PlafondTenduSection from '@/components/PlafondTenduSection';
+import ConfianceSection from '@/components/ConfianceSection';
+import CallToAction from "@/components/CallToAction";
 import type { Metadata } from 'next';
-import ReviewButton from "@components/ReviewButton";
+import ReviewButton from "@/components/ReviewButton";
 import Script from 'next/script'; // ✅ AJOUTER CETTE LIGNE
 
 export const metadata: Metadata = {

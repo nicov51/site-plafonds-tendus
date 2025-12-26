@@ -1,13 +1,10 @@
 import type { NextConfig } from "next";
-import withBundleAnalyzer from '@next/bundle-analyzer';
 
 const nextConfig: NextConfig = {
-    //  mode strict React
-    reactStrictMode: true,
+    output: 'standalone', //  pour Docker
+    compress: true,
+    poweredByHeader: false,
 };
 
-const bundleAnalyzer = withBundleAnalyzer({
-    enabled: process.env.ANALYZE === 'true',
-});
+export default nextConfig;
 
-export default bundleAnalyzer(nextConfig);

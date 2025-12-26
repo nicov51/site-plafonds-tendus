@@ -1,4 +1,4 @@
-import Contact from "@/src/components/Contact";
+import Contact from "@/components/Contact";
 
 export const metadata = {
     title: "Contact - Plafonds Tendus",
