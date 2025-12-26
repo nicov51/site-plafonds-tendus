@@ -1,13 +1,13 @@
 import { Resend } from 'resend';
 import { NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   const body = await req.json();
 
   try {
     const {nom, email, ville, date, surface, description} = body;
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     const messageHtml = `
       <h2>Nouvelle demande de devis</h2>
