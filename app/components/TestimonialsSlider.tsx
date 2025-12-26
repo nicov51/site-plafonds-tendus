@@ -1,6 +1,6 @@
 "use client";
 import { Star } from "@mui/icons-material";
-import reviews from "@/src/data/reviews";
+import reviews from "@/data/reviews";
 
 export default function TestimonialsSlider() {
     // Dupliquer les avis pour l'effet de boucle infinie

@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import BeforeAfterSlider from '@components/BeforeAfterSlider';
-import BeforeAfterSideBySide from '@components/BeforeAfterSideBySide';
-import ContextArticle from '@components/ContextArticle';
+import BeforeAfterSlider from '@/components/BeforeAfterSlider';
+import BeforeAfterSideBySide from '@/components/BeforeAfterSideBySide';
+import ContextArticle from '@/components/ContextArticle';
 
 const avantApres = [
     { avant: '/images/avantApres/avant1.webp', apres: '/images/avantApres/apres1.webp', alt: 'Salon avec ancien plafond' },

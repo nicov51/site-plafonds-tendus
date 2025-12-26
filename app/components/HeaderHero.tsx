@@ -2,7 +2,7 @@
 
 import { Box } from "@mui/material";
 import Image from "next/image";
-import headerHeroImage from "@/public/images/headerHero.webp";
+import headerHeroImage from "public/images/headerHero.webp";
 
 export default function HeaderHero() {
   return (

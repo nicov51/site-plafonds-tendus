@@ -1,7 +1,7 @@
 "use client";
-import ContactInfo from "@components/Contact";
-import DevisForm from "@components/DevisForm";
-import ZoneIntervention from "@components/ZoneIntervention";
+import ContactInfo from "@/components/Contact";
+import DevisForm from "@/components/DevisForm";
+import ZoneIntervention from "@/components/ZoneIntervention";
 
 export default function ContactDevisPage() {
     return (

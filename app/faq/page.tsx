@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import FaqItem from "@components/FaqItem";
-import faqList from "@/src/data/faqList";
+import FaqItem from "@/components/FaqItem";
+import faqList from "@/data/faqList";
 import Script from 'next/script';
 
 export const metadata: Metadata = {
