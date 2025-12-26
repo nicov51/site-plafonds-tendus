@@ -1,0 +1,114 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+@use 'sass:color';
+
+.before-after-slider {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: $spacing-md;
+
+  @include sm {
+    gap: $spacing-sm;
+  }
+
+  &__before {
+    position: relative;
+    aspect-ratio: 3/4;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    opacity: 0.8;
+    transition: all $transition-base;
+    box-shadow: $shadow-md;
+
+    @include dark-mode {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    }
+
+    @include sm {
+      aspect-ratio: 4/5;
+    }
+
+    &:hover {
+      opacity: 1;
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+
+      @include dark-mode {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+      }
+    }
+
+    img {
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__after {
+    position: relative;
+    aspect-ratio: 4/3;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    transition: all $transition-base;
+    box-shadow: $shadow-lg;
+
+    @include dark-mode {
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.7);
+    }
+
+    @include sm {
+      aspect-ratio: 1/1;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-xl;
+
+      @include dark-mode {
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+      }
+    }
+
+    img {
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: $spacing-sm;
+    left: $spacing-sm;
+    padding: $spacing-xs $spacing-sm;
+    background: rgba(0, 0, 0, 0.8);
+    color: $color-white;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    border-radius: $border-radius;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(8px);
+    z-index: 2;
+
+    @include sm {
+      font-size: $font-size-xs;
+      padding: 4px 8px;
+      top: 8px;
+      left: 8px;
+    }
+
+    &--highlight {
+      background: linear-gradient(135deg, $color-primary, $color-primary-light);
+      box-shadow: 0 2px 12px rgba($color-primary, 0.4);
+
+      @include dark-mode {
+        background: linear-gradient(135deg, $primary, color.adjust($primary, $lightness: 10%));
+        box-shadow: 0 2px 12px rgba($primary, 0.6);
+      }
+
+      @include sm {
+        font-size: $font-size-xs;
+      }
+    }
+  }
+}
