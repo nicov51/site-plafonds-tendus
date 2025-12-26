@@ -53,7 +53,7 @@ export default function Home() {
                         "description": "Entreprise artisanale spécialisée dans la pose de plafonds tendus depuis 2009",
                         "address": {
                             "@type": "PostalAddress",
-                            "streetAddress": "123 rue de l'Artisanat",
+                            "streetAddress": "23 rue henri dambreville",
                             "addressLocality": "Fismes",
                             "postalCode": "51170",
                             "addressCountry": "FR"

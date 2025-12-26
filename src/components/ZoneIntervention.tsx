@@ -27,7 +27,7 @@ export default function ZoneIntervention() {
                     {/* Image */}
                     <div className="zone-intervention__image-wrapper">
                         <Image
-                            src="/images/zoneIntervention.png"
+                            src="/images/zoneIntervention.webp"
                             alt="Zone d'intervention couvrant Reims, Épernay, Châlons-en-Champagne et les communes alentours"
                             width={800}
                             height={600}
