@@ -1,5 +1,6 @@
 'use client';
-import CheckIcon from '@mui/icons-material/Check';
+import { Box, Typography, Paper, List, ListItem, ListItemIcon } from '@mui/material';
+import CheckIcon from '@mui/icons-material/Check'; // Icône simple de MUI
 
 export default function PlafondTenduSection() {
     const advantages = [
@@ -14,40 +15,42 @@ export default function PlafondTenduSection() {
     ];
 
     return (
-        <section className="plafond-tendu">
-            <div className="plafond-tendu__container">
-                <div className="plafond-tendu__paper">
-                    <h2 className="plafond-tendu__title">
-                        Le plafond tendu, c'est quoi ?
-                    </h2>
+        <Paper sx={{ p: 4, mb: 6, borderRadius: 2 }}>
+            <Typography variant="h4" component="h2" gutterBottom align="center" color="primary">
+                LE PLAFOND TENDU, C'EST QUOI ?
+            </Typography>
 
-                    <div className="plafond-tendu__content">
-                        <div className="plafond-tendu__text-block">
-                            <p>
-                                <strong>C'est une toile dont la composition est similaire au liner de piscine.</strong> Elle est maintenue par des profils spécifiques fixés en périphérie de la pièce.
-                            </p>
-                            <p>
-                                Le système est né en France il y a 50 ans. Grâce à ses nombreux avantages, il s'exporte aujourd'hui dans le monde entier.
-                            </p>
-                        </div>
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, mb: 4 }}>
+                <Box sx={{ flex: 1 }}>
+                    <Typography paragraph>
+                        <strong>C'est une toile dont la composition est similaire au liner de piscine.</strong> Elle est maintenue par des profils spécifiques fixés en périphérie de la pièce.
+                    </Typography>
+                    <Typography paragraph>
+                        Le système est né en France il y a 50 ans. Grâce à ses nombreux avantages, il s'exporte aujourd'hui dans le monde entier.
+                    </Typography>
+                </Box>
+                <Box sx={{ flex: 1 }}>
+                    <Typography paragraph>
+                        Son utilisation s'est généralisée tant dans les espaces publics que chez les particuliers. S'il garde encore l'image d'un produit de luxe, son prix est devenu très compétitif.
+                    </Typography>
+                </Box>
+            </Box>
 
-                        <div className="plafond-tendu__text-block">
-                            <p>
-                                Son utilisation s'est généralisée tant dans les espaces publics que chez les particuliers. S'il garde encore l'image d'un produit de luxe, son prix est devenu très compétitif.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="plafond-tendu__advantages">
-                        {advantages.map((item, index) => (
-                            <div key={index} className="plafond-tendu__advantage-item">
-                                <CheckIcon className="icon" fontSize="small" />
-                                <span className="text">{item}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </section>
+            {/* Liste simple avec icônes standard */}
+            <List dense sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                gap: 1
+            }}>
+                {advantages.map((item, index) => (
+                    <ListItem key={index} sx={{ alignItems: 'flex-start', py: 0.5 }}>
+                        <ListItemIcon sx={{ minWidth: 30, color: 'primary.main' }}>
+                            <CheckIcon fontSize="small" />
+                        </ListItemIcon>
+                        <Typography variant="body2">{item}</Typography>
+                    </ListItem>
+                ))}
+            </List>
+        </Paper>
     );
 }

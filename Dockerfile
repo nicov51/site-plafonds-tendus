@@ -1,5 +1,5 @@
 # Étape 1 - Base commune
-FROM node:20-alpine AS base
+FROM node:18-alpine AS base
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
@@ -22,7 +22,7 @@ FROM base AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_TELEMETRY_DISABLED=1  # Désactive la télémétrie
 
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S -u 1001 -G nodejs nextjs && \
