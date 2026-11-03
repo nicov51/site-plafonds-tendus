@@ -1,21 +1,16 @@
-version: '3.8'
-
 services:
   app:
     container_name: plafonds-tendus-site-prod
     build:
       context: .
       dockerfile: Dockerfile
-    restart: unless-stopped     # Meilleure option que 'always'
+    restart: unless-stopped
     ports:
       - "127.0.0.1:3000:3000"
     environment:
-      - NODE_ENV=production
-      - RESEND_API_KEY=${RESEND_API_KEY}
-      - RESEND_FROM=${RESEND_FROM}
-      - RESEND_TO=${RESEND_TO}
+      - .env.prod
     networks:
-      - web
+      - plafonds_network
     deploy:
       resources:
         limits:
